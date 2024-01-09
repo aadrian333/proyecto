@@ -14,7 +14,7 @@ create table alojamiento(
 
 create table tipo_alojamiento(
 	id int identity(1,1) not null,
-	nombre int not null,
+	nombre varchar(50) not null,
 	primary key (id)
 );
 
@@ -44,7 +44,7 @@ create table alojamiento_reserva(
 
 create table cuenta_bancaria(
 	id int identity(1,1) not null,
-	numero char(20) not null,
+	numero char(22) not null,
 	cantidad_importada int,
 	cantidad_exportada int
 	primary key (id)
@@ -179,48 +179,178 @@ create user empleado4 for login Empleado4Login with default_schema = Empresa;
 create login Empleado5Login with password = 'test';
 create user empleado5 for login Empleado5Login with default_schema = Empresa;
 create login clienteLogin  with password = 'test';
-create user cliente for login clienteLogin with default_schema = Empresa;
+create user cliente1 for login clienteLogin with default_schema = Empresa;
 
-use Empresa;
-GO
-create role administracio;
 use Empresa;
 GO
 create role empleado;
-use Empresa;
-GO
 create role clientes;
-use Empresa;
-GO
 create role mantenimiento;
-use Empresa;
-GO
 create role contabilidad;
-use Empresa;
-GO
 create role marketing;
-use Empresa;
-GO
 create role rrhh;
+create role back_end;
+
+-- añadir los usuarios a sus roles corespondientes
+
 use Empresa;
 GO
-create role soporte;
-use Empresa;
-GO
-create role direccion;
-
-
-alter role administracio add member administrador;
 alter role empleado add member empleado1;
 alter role empleado add member empleado2;
 alter role empleado add member empleado3;
 alter role empleado add member empleado4;
 alter role empleado add member empleado5;
-alter role clientes add member cliente;
+alter role clientes add member cliente1;
 alter role mantenimiento add member  empleado1;
 alter role contabilidad add member  empleado2;
 alter role marketing add member  empleado3;
 alter role rrhh add member  empleado4;
-alter role soporte add member  empleado5;
-alter role direccion add member  director;
+alter role back_end add member  empleado5;
 
+-- asignar permisos
+
+use master;
+GO
+alter server role sysadmin add member AdminLogin;
+alter server role sysadmin add member DirectorLogin;
+
+use Empresa;
+GO
+grant select, update, insert on trabajador to rrhh;
+grant select, update, insert on puesto_trabajo to rrhh;
+grant select on cuenta_bancaria to contabilidad;
+grant select on cliente to contabilidad;
+grant select, update, insert on database :: Empresa to mantenimiento;
+grant select, insert on reserva to back_end;
+grant select on plan_ to back_end;
+grant select on reserva_plan to back_end;
+grant select on plan_servicio to back_end;
+grant select on servicio to back_end;
+grant select on cliente to marketing;
+grant select on cliente_domicilio to marketing;
+grant select on domicilio to marketing;
+grant select on municipio to marketing;
+grant select on plan_ to marketing;
+grant select on reserva to empleado;
+
+-- crear vista para los clientes
+GO
+
+create view ReservasCliente as
+select  r.*
+from reserva r
+join reservas_cliente rc on r.id = rc.id_reserva
+where rc.id_cliente = '123456789';
+GO
+
+grant select on ReservasCliente to cliente1;
+
+-- insertar informacion
+
+insert into tipo_alojamiento (nombre)
+values ('Bungaló');
+insert into tipo_alojamiento (nombre)
+values ('Parzela');
+insert into tipo_alojamiento (nombre)
+values ('Dormitorio Compartido');
+insert into tipo_alojamiento (nombre)
+values ('Area camping');
+
+insert into alojamiento (numero, tipo_alojamiento, num_ocupantes, descripcion)
+values (1, (select top 1 id from tipo_alojamiento order by RAND()), 2, 'Habitación doble con vista al mar');
+insert into alojamiento (numero, tipo_alojamiento, num_ocupantes, descripcion)
+values (2, (select top 1 id from tipo_alojamiento order by RAND()), 4, 'Habitación familiar');
+insert into alojamiento (numero, tipo_alojamiento, num_ocupantes, descripcion)
+values (3, (select top 1 id from tipo_alojamiento order by RAND()), 8, 'Habitación XXL para vacaciones en grupo');
+
+insert into reserva_estado (nombre)
+values ('Confirmada');
+insert into reserva_estado (nombre)
+values ('Cancelado');
+insert into reserva_estado (nombre)
+values ('Pendiente');
+
+insert into reserva (fecha_entrada, fecha_salida, comentarios, estado, coste, tipo_pago, pagado, num_personas)
+values ('2024-01-10', '2024-01-15', 'Vacaciones familiares', (select top 1 id from reserva_estado order by RAND()), 500, 'Tarjeta', 1, 2);
+insert into reserva (fecha_entrada, fecha_salida, comentarios, estado, coste, tipo_pago, pagado, num_personas)
+values ('2024-01-10', '2024-01-15', 'Persona con discapacidad de movilidad', (select top 1 id from reserva_estado order by RAND()), 500, 'Tarjeta', 1, 2);
+
+insert into alojamiento_reserva (id_reserva, id_alojamiento)
+values ((select top 1 id from reserva order by RAND()), (select top 1 numero from alojamiento order by RAND()));
+insert into alojamiento_reserva (id_reserva, id_alojamiento)
+values ((select top 1 id from reserva order by RAND()), (select top 1 numero from alojamiento order by RAND()));
+insert into alojamiento_reserva (id_reserva, id_alojamiento)
+values ((select top 1 id from reserva order by RAND()), (select top 1 numero from alojamiento order by RAND()));
+
+
+insert into cuenta_bancaria (numero, cantidad_importada, cantidad_exportada)
+values ('ES12345678901234567890', 1000, 500);
+insert into cuenta_bancaria (numero, cantidad_importada, cantidad_exportada)
+values ('ES12345678901234567891', 21, 0);
+insert into cuenta_bancaria (numero, cantidad_importada, cantidad_exportada)
+values ('ES12345678901234567892', 300, 90);
+
+
+insert into cliente (dni, nombre, apellidos, nr_reservas, cuenta_bancaria)
+values ('123456789', 'Juan', 'Pérez', 1, (select top 1 id from cuenta_bancaria order by RAND()));
+insert into cliente (dni, nombre, apellidos, nr_reservas, cuenta_bancaria)
+values ('123356789', 'Aina', 'Muñoz', 3, (select top 1 id from cuenta_bancaria order by RAND()));
+
+
+insert into reservas_cliente (id_cliente, id_reserva)
+values ((select top 1 id from cliente order by RAND()), (select top 1 id from reserva order by RAND()));
+insert into reservas_cliente (id_cliente, id_reserva)
+values ((select top 1 id from cliente order by RAND()), (select top 1 id from reserva order by RAND()));
+
+insert into puesto_trabajo (nombre, salario, descripcion)
+values ('Recepcionista', 2000, 'Atención al cliente');
+insert into puesto_trabajo (nombre, salario, descripcion)
+values ('Camarero', 2000, 'Atender al bar');
+insert into puesto_trabajo (nombre, salario)
+values ('Cocinero', 2000);
+
+insert into trabajador (dni, nombre, apellidos, cuenta_bancaria, puesto)
+values ('987654321', 'Ana', 'Gómez', (select top 1 id from cuenta_bancaria order by RAND()), (select top 1 id from puesto_trabajo order by RAND()));
+
+
+insert into municipio (nombre, ciudad, provincia, comunidad_autonoma)
+values ('Ciudad Ficticia', 'Ficticiaville', 'Ficticia', 'Fictonia');
+
+
+insert into domicilio (codigo_postal, calle, numero, puerta, municipio)
+values ('12345', 'Calle Falsa', 123, 'A', (select top 1 id from municipio order by RAND()));
+
+
+insert into cliente_domicilio (id_cliente, id_domicilio)
+values ((select top 1 id from cliente order by RAND()), (select top 1 id from domicilio order by RAND()));
+insert into cliente_domicilio (id_cliente, id_domicilio)
+values ((select top 1 id from cliente order by RAND()), (select top 1 id from domicilio order by RAND()));
+
+
+insert into plan_ (nombre, descripcion, min_personas, max_personas)
+values ('Plan Vacacional', 'Incluye alojamiento y desayuno', 2, 4);
+insert into plan_ (nombre, descripcion, min_personas, max_personas)
+values ('Plan Familiar', 'Descuento por el número de familiares', 4, 10);
+insert into plan_ (nombre, min_personas, max_personas)
+values ('Plan VIP', 3, 5);
+
+
+insert into servicio (nombre, descripcion)
+values ('Wi-Fi', 'Conexión a Internet');
+insert into servicio (nombre, descripcion, horar_inicio, horar_fin)
+values ('Room Service', 'Puedes pedir cualquier cosa a nuestros trabajadores durante el horario establecido', '08:00:00', '22:00:00');
+
+
+insert into plan_servicio (id_servicio, id_plan)
+values ((select top 1 id from servicio order by RAND()), (select top 1 id from plan_ order by RAND()));
+
+
+insert into reserva_plan (id_reserva, id_plan)
+values ((select top 1 id from reserva order by RAND()), (select top 1 id from plan_ order by RAND()));
+
+insert into productos (nombre, coste, stock)
+values ('Toallas', 10, 100);
+insert into productos (nombre, coste, stock)
+values ('Frutos secos', 10, 100);
+insert into productos (nombre, coste, stock)
+values ('Mochila camping', 10, 100);
