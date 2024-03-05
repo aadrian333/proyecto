@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Definición del elemento clientes -->
+  <xs:element name="clientes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="cliente" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" type="xs:integer"/>
+              <xs:element name="dni" type="xs:string"/>
+              <xs:element name="nombre" type="xs:string"/>
+              <xs:element name="apellido" type="xs:string"/>
+              <xs:element name="email" type="xs:string"/>
+              <xs:element name="telefono" type="xs:string"/>
+              <xs:element name="fecha-nacimiento" type="xs:date"/>
+              <xs:element name="domicilio">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="calle" type="xs:string"/>
+                    <xs:element name="numero" type="xs:string"/>
+                    <xs:element name="ciudad" type="xs:string"/>
+                    <xs:element name="codigo-postal" type="xs:string"/>
+                    <xs:element name="pais" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="reservas">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:integer" maxOccurs="unbounded"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="historial-productos">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="producto" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="id" type="xs:integer"/>
+                          <xs:element name="cantidad" type="xs:integer"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

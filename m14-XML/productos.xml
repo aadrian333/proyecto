@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<productos>
+    <producto>
+        <id>1</id>
+        <nombre>Parcela Playa</nombre>
+        <tipo>Alojamiento</tipo>
+        <preu>79.99</preu>
+        <descripcion>Parcela en la playa con acceso directo al mar.</descripcion>
+    </producto>
+    <producto>
+        <id>2</id>
+        <nombre>Glamping Coco</nombre>
+        <tipo>Alojamiento</tipo>
+        <preu>129.99</preu>
+        <descripcion>Acogedor glamping en forma de coco con todas las comodidades.</descripcion>
+    </producto>
+    <producto>
+        <id>3</id>
+        <nombre>Bungalow</nombre>
+        <tipo>Alojamiento</tipo>
+        <preu>199.99</preu>
+        <descripcion>Bungalow espacioso y confortable con vistas al mar.</descripcion>
+    </producto>
+    <producto>
+        <id>4</id>
+        <nombre>Parcela</nombre>
+        <tipo>Alojamiento</tipo>
+        <preu>59.99</preu>
+        <descripcion>Parcela estándar con conexión eléctrica y espacio para tienda de campaña o caravana.</descripcion>
+    </producto>
+    <producto>
+        <id>5</id>
+        <nombre>Habitacion XXL</nombre>
+        <tipo>Alojamiento</tipo>
+        <preu>249.99</preu>
+        <descripcion>Habitación extra grande con todas las comodidades y vistas panorámicas al entorno.</descripcion>
+    </producto>
+    <producto>
+        <id>6</id>
+        <nombre>Glamping normal</nombre>
+        <tipo>Alojamiento</tipo>
+        <preu>99.99</preu>
+        <descripcion>Glamping tradicional con todas las comodidades necesarias para una estancia confortable.</descripcion>
+    </producto>
+    <producto>
+        <id>7</id>
+        <nombre>Pizza Margarita</nombre>
+        <tipo>Plato</tipo>
+        <preu>8.99</preu>
+        <descripcion>Deliciosa pizza con salsa de tomate, mozzarella fresca y albahaca.</descripcion>
+    </producto>
+    <producto>
+        <id>8</id>
+        <nombre>Pasta Carbonara</nombre>
+        <tipo>Plato</tipo>
+        <preu>10.99</preu>
+        <descripcion>Pasta italiana cocida al dente con salsa carbonara cremosa y trozos de panceta.</descripcion>
+    </producto>
+    <producto>
+        <id>9</id>
+        <nombre>Ensalada César</nombre>
+        <tipo>Plato</tipo>
+        <preu>7.99</preu>
+        <descripcion>Ensalada fresca con lechuga romana, pollo a la parrilla, crutones, queso parmesano y aderezo César.</descripcion>
+    </producto>
+    <producto>
+        <id>10</id>
+        <nombre>Agua Mineral</nombre>
+        <tipo>Producto</tipo>
+        <preu>0.99</preu>
+        <descripcion>Botella de agua mineral natural, ideal para mantenerse hidratado.</descripcion>
+    </producto>
+    <producto>
+        <id>11</id>
+        <nombre>Zapatillas de Playa</nombre>
+        <tipo>Producto</tipo>
+        <preu>4.99</preu>
+        <descripcion>Zapatillas cómodas y resistentes para disfrutar de la playa sin preocupaciones.</descripcion>
+    </producto>
+    <producto>
+        <id>12</id>
+        <nombre>Wi-Fi Premium</nombre>
+        <tipo>Servicio</tipo>
+        <preu>15.99</preu>
+        <descripcion>Conexión de Wi-Fi de alta velocidad para disfrutar de una conexión estable durante tu estancia.</descripcion>
+    </producto>
+    <producto>
+        <id>13</id>
+        <nombre>Desayuno Buffet</nombre>
+        <tipo>Servicio</tipo>
+        <preu>12.99</preu>
+        <descripcion>Desayuno completo estilo buffet con una amplia variedad de opciones para empezar bien el día.</descripcion>
+    </producto>
+    <producto>
+        <id>14</id>
+        <nombre>Parking Privado</nombre>
+        <tipo>Servicio</tipo>
+        <preu>9.99</preu>
+        <descripcion>Acceso exclusivo a un espacio de parking privado durante tu estancia.</descripcion>
+    </producto>
+</productos>

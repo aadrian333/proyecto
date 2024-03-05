@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clientes>
+    <cliente>
+        <id>1</id>
+        <dni>J1234567X</dni>
+        <nombre>John</nombre>
+        <apellido>Doe</apellido>
+        <email>john@example.com</email>
+        <telefono>928 23 45 67</telefono>
+        <fecha-nacimiento>1992-12-20</fecha-nacimiento>
+        <domicilio>
+            <calle>Calle Principal</calle>
+            <numero>123</numero>
+            <ciudad>Ciudad Principal</ciudad>
+            <codigo-postal>12345</codigo-postal>
+            <pais>País Principal</pais>
+        </domicilio>
+        <reservas>
+            <id>1</id>
+            <id>3</id>
+        </reservas>
+        <historial-productos>
+            <producto>
+                <id>2</id>
+                <cantidad>1</cantidad>  
+            </producto>
+            <producto>
+                <id>4</id>
+                <cantidad>2</cantidad>  
+            </producto>
+        </historial-productos>
+    </cliente>
+    <cliente>
+        <id>2</id>
+        <dni>K2345678Y</dni>
+        <nombre>Mary</nombre>
+        <apellido>Smith</apellido>
+        <email>mary@example.com</email>
+        <telefono>922 34 56 78</telefono>
+        <fecha-nacimiento>1985-05-15</fecha-nacimiento>
+        <domicilio>
+            <calle>Avenida Secundaria</calle>
+            <numero>456</numero>
+            <ciudad>Ciudad Secundaria</ciudad>
+            <codigo-postal>54321</codigo-postal>
+            <pais>País Secundario</pais>
+        </domicilio>
+        <reservas>
+            <id>2</id>
+        </reservas>
+        <historial-productos>
+            <producto>
+                <id>1</id>
+                <cantidad>1</cantidad>  
+            </producto>
+        </historial-productos>
+    </cliente>
+    <cliente>
+        <id>3</id>
+        <dni>L3456789Z</dni>
+        <nombre>Michael</nombre>
+        <apellido>Johnson</apellido>
+        <email>michael@example.com</email>
+        <telefono>931 23 45 67</telefono>
+        <fecha-nacimiento>1978-08-25</fecha-nacimiento>
+        <domicilio>
+            <calle>Calle Terciaria</calle>
+            <numero>789</numero>
+            <ciudad>Ciudad Terciaria</ciudad>
+            <codigo-postal>67890</codigo-postal>
+            <pais>País Terciario</pais>
+        </domicilio>
+        <reservas>
+            <id>4</id>
+        </reservas>
+        <historial-productos>
+            <producto>
+                <id>3</id>
+                <cantidad>1</cantidad>  
+            </producto>
+        </historial-productos>
+    </cliente>
+    <cliente>
+        <id>4</id>
+        <dni>M4567890A</dni>
+        <nombre>Anna</nombre>
+        <apellido>Lee</apellido>
+        <email>anna@example.com</email>
+        <telefono>935 67 89 01</telefono>
+        <fecha-nacimiento>1990-03-10</fecha-nacimiento>
+        <domicilio>
+            <calle>Plaza Principal</calle>
+            <numero>567</numero>
+            <ciudad>Ciudad Cuaternaria</ciudad>
+            <codigo-postal>89012</codigo-postal>
+            <pais>País Cuaternario</pais>
+        </domicilio>
+        <reservas>
+            <id>5</id>
+        </reservas>
+        <historial-productos>
+            <producto>
+                <id>6</id>
+                <cantidad>1</cantidad>  
+            </producto>
+        </historial-productos>
+    </cliente>
+    <cliente>
+        <id>5</id>
+        <dni>N5678901B</dni>
+        <nombre>David</nombre>
+        <apellido>Williams</apellido>
+        <email>david@example.com</email>
+        <telefono>944 56 78 90</telefono>
+        <fecha-nacimiento>1982-11-05</fecha-nacimiento>
+        <domicilio>
+            <calle>Paseo Secundario</calle>
+            <numero>890</numero>
+            <ciudad>Ciudad Quinternaria</ciudad>
+            <codigo-postal>01234</codigo-postal>
+            <pais>País Quinternario</pais>
+        </domicilio>
+        <reservas>
+            <id>6</id>
+        </reservas>
+        <historial-productos>
+            <producto>
+                <id>7</id>
+                <cantidad>1</cantidad>  
+            </producto>
+            <producto>
+                <id>9</id>
+                <cantidad>1</cantidad>  
+            </producto>
+        </historial-productos>
+    </cliente>
+    <cliente>
+        <id>6</id>
+        <dni>O6789012C</dni>
+        <nombre>Lisa</nombre>
+        <apellido>Miller</apellido>
+        <email>lisa@example.com</email>
+        <telefono>951 23 45 67</telefono>
+        <fecha-nacimiento>1975-09-30</fecha-nacimiento>
+        <domicilio>
+            <calle>Avenida Principal</calle>
+            <numero>234</numero>
+            <ciudad>Ciudad Sexternaria</ciudad>
+            <codigo-postal>34567</codigo-postal>
+            <pais>País Sexternario</pais>
+        </domicilio>
+        <reservas>
+            <id>7</id>
+        </reservas>
+        <historial-productos>
+            <producto>
+                <id>10</id>
+                <cantidad>1</cantidad>  
+            </producto>
+        </historial-productos>
+    </cliente>
+</clientes>
