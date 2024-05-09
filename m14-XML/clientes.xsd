@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:simpleType name="DNIType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9A-Z][0-9]{7}[A-Z]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="EmailType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:pattern value="[^@\s]+@[^@\s]+\.[^@\s]+"/>
+    </xs:restriction>
+  </xs:simpleType>
   <!-- Definición del elemento clientes -->
   <xs:element name="clientes">
-    <xs:simpleType name="DNIType">
-      <xs:restriction base="xs:string">
-        <xs:pattern value="[0-9]{8}[A-Z]"/>
-      </xs:restriction>
-    </xs:simpleType>
     
     <xs:complexType>
       <xs:sequence>
@@ -18,7 +25,7 @@
               <xs:element name="dni" type="DNIType"/>
               <xs:element name="nombre" type="xs:string"/>
               <xs:element name="apellido" type="xs:string"/>
-              <xs:element name="email" type="xs:string"/>
+              <xs:element name="email" type="EmailType"/>
               <xs:element name="telefono" type="xs:string"/>
               <xs:element name="fecha-nacimiento" type="xs:date"/>
               <xs:element name="domicilio">
