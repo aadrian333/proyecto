@@ -191,7 +191,7 @@ create role marketing;
 create role rrhh;
 create role back_end;
 
--- añadir los usuarios a sus roles corespondientes
+-- aÃ±adir los usuarios a sus roles corespondientes
 
 use Empresa;
 GO
@@ -223,9 +223,7 @@ grant select on cliente to contabilidad;
 grant select, update, insert on database :: Empresa to mantenimiento;
 grant select, insert on reserva to back_end;
 grant select on plan_ to back_end;
-grant select on reserva_plan to back_end;
-grant select on plan_servicio to back_end;
-grant select on servicio to back_end;
+grant select, update, insert on database :: Empresa to mantenimiento;
 grant select on cliente to marketing;
 grant select on cliente_domicilio to marketing;
 grant select on domicilio to marketing;
@@ -248,7 +246,7 @@ grant select on ReservasCliente to cliente1;
 -- insertar informacion
 
 insert into tipo_alojamiento (nombre)
-values ('Bungaló');
+values ('BungalÃ³');
 insert into tipo_alojamiento (nombre)
 values ('Parzela');
 insert into tipo_alojamiento (nombre)
@@ -257,11 +255,11 @@ insert into tipo_alojamiento (nombre)
 values ('Area camping');
 
 insert into alojamiento (numero, tipo_alojamiento, num_ocupantes, descripcion)
-values (1, (select top 1 id from tipo_alojamiento order by RAND()), 2, 'Habitación doble con vista al mar');
+values (1, (select top 1 id from tipo_alojamiento order by RAND()), 2, 'HabitaciÃ³n doble con vista al mar');
 insert into alojamiento (numero, tipo_alojamiento, num_ocupantes, descripcion)
-values (2, (select top 1 id from tipo_alojamiento order by RAND()), 4, 'Habitación familiar');
+values (2, (select top 1 id from tipo_alojamiento order by RAND()), 4, 'HabitaciÃ³n familiar');
 insert into alojamiento (numero, tipo_alojamiento, num_ocupantes, descripcion)
-values (3, (select top 1 id from tipo_alojamiento order by RAND()), 8, 'Habitación XXL para vacaciones en grupo');
+values (3, (select top 1 id from tipo_alojamiento order by RAND()), 8, 'HabitaciÃ³n XXL para vacaciones en grupo');
 
 insert into reserva_estado (nombre)
 values ('Confirmada');
@@ -292,9 +290,9 @@ values ('ES12345678901234567892', 300, 90);
 
 
 insert into cliente (dni, nombre, apellidos, nr_reservas, cuenta_bancaria)
-values ('123456789', 'Juan', 'Pérez', 1, (select top 1 id from cuenta_bancaria order by RAND()));
+values ('123456789', 'Juan', 'PÃ©rez', 1, (select top 1 id from cuenta_bancaria order by RAND()));
 insert into cliente (dni, nombre, apellidos, nr_reservas, cuenta_bancaria)
-values ('123356789', 'Aina', 'Muñoz', 3, (select top 1 id from cuenta_bancaria order by RAND()));
+values ('123356789', 'Aina', 'MuÃ±oz', 3, (select top 1 id from cuenta_bancaria order by RAND()));
 
 
 insert into reservas_cliente (id_cliente, id_reserva)
@@ -303,14 +301,14 @@ insert into reservas_cliente (id_cliente, id_reserva)
 values ((select top 1 id from cliente order by RAND()), (select top 1 id from reserva order by RAND()));
 
 insert into puesto_trabajo (nombre, salario, descripcion)
-values ('Recepcionista', 2000, 'Atención al cliente');
+values ('Recepcionista', 2000, 'AtenciÃ³n al cliente');
 insert into puesto_trabajo (nombre, salario, descripcion)
 values ('Camarero', 2000, 'Atender al bar');
 insert into puesto_trabajo (nombre, salario)
 values ('Cocinero', 2000);
 
 insert into trabajador (dni, nombre, apellidos, cuenta_bancaria, puesto)
-values ('987654321', 'Ana', 'Gómez', (select top 1 id from cuenta_bancaria order by RAND()), (select top 1 id from puesto_trabajo order by RAND()));
+values ('987654321', 'Ana', 'GÃ³mez', (select top 1 id from cuenta_bancaria order by RAND()), (select top 1 id from puesto_trabajo order by RAND()));
 
 
 insert into municipio (nombre, ciudad, provincia, comunidad_autonoma)
@@ -330,13 +328,13 @@ values ((select top 1 id from cliente order by RAND()), (select top 1 id from do
 insert into plan_ (nombre, descripcion, min_personas, max_personas)
 values ('Plan Vacacional', 'Incluye alojamiento y desayuno', 2, 4);
 insert into plan_ (nombre, descripcion, min_personas, max_personas)
-values ('Plan Familiar', 'Descuento por el número de familiares', 4, 10);
+values ('Plan Familiar', 'Descuento por el nÃºmero de familiares', 4, 10);
 insert into plan_ (nombre, min_personas, max_personas)
 values ('Plan VIP', 3, 5);
 
 
 insert into servicio (nombre, descripcion)
-values ('Wi-Fi', 'Conexión a Internet');
+values ('Wi-Fi', 'ConexiÃ³n a Internet');
 insert into servicio (nombre, descripcion, horar_inicio, horar_fin)
 values ('Room Service', 'Puedes pedir cualquier cosa a nuestros trabajadores durante el horario establecido', '08:00:00', '22:00:00');
 
